@@ -1,8 +1,9 @@
 import express from 'express'
 import navesRouter from './controllers/naves'
-import dotenv from 'dotenv'
+import 'dotenv/config'
+import './mongo'
 const app = express()
-dotenv.config()
+// dotenv.config()
 app.use(express.json())
 
 app.use(express.static('../app/build'))
