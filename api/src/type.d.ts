@@ -8,4 +8,6 @@ export interface INaves{
   tipo: TipoNave
   combustible: string
   velocidadMax: number
+  despegar(): string
+  aterrizar(): string
 }
