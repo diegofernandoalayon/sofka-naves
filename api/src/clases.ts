@@ -1,4 +1,4 @@
-import { INaves } from "./type";
+import { INaves, INaveLanzadera, INaveTripulada, INaveNoTripulada } from "./type";
 import { TipoNave } from "./enums";
 
 
@@ -26,7 +26,7 @@ class Nave implements INaves {
   }
 }
 
-export class NaveLanzadera extends Nave{
+export class NaveLanzadera extends Nave implements INaveLanzadera {
   capCarga: number
   cantPropulsores: number
   constructor(
@@ -45,7 +45,7 @@ export class NaveLanzadera extends Nave{
   }
 }
 
-export class NaveTripulada extends Nave{
+export class NaveTripulada extends Nave implements INaveTripulada{
   capPasajeros : number
   constructor(
     nombre: string, 
@@ -63,7 +63,7 @@ export class NaveTripulada extends Nave{
 
 }
 
-export class NaveNoTripulada extends Nave {
+export class NaveNoTripulada extends Nave implements INaveNoTripulada{
   altitud: number
   puedeAterrizar: boolean
   constructor(
