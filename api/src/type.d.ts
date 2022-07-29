@@ -11,3 +11,15 @@ export interface INaves{
   despegar(): string
   aterrizar(): string
 }
+export interface INaveLanzadera extends INaves{
+  capCarga: number
+  cantPropulsores: number
+}
+
+export interface INaveTripulada extends INaves{
+  capPasajeros: number
+}
+export interface INaveNoTripulada extends INaves{
+  altitud: number
+  puedeAterrizar: boolean
+}
