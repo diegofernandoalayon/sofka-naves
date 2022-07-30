@@ -1,10 +1,15 @@
 import express from 'express'
-import { modelNaveLanzadera } from '../models/naves'
+import { modelNaveLanzadera, modelNaveTripulada } from '../models/naves'
+import { newNaveLanzaderaEntry, newNaveNoTripuladaEntry, newNaveTripuladaEntry } from '../utils'
+import * as navesServices from '../services/navesServices'
 const navesRouter = express.Router()
 
-navesRouter.get('/', (_req, res) => {
-  
-  res.send('listar todas las naves')
+navesRouter.get('/', async(_req, res) => {
+  const responseNavesLanzadera = await modelNaveLanzadera.find({})
+  const responseNavesTripulada = await modelNaveTripulada.find({})
+  const responseAll = [...responseNavesLanzadera, ...responseNavesTripulada]
+  res.json(responseAll)
+  // res.send('listar todas las naves')
 })
 
 navesRouter.post('/', (req, res) => {
@@ -14,35 +19,49 @@ navesRouter.post('/', (req, res) => {
 
     if(tipo === 'lanzadera'){
 
-      console.log('hola')
-      console.log(tipo)
-
-      const { nombre, peso, empuje, combustible, velocidadMax, capCarga, cantPropulsores}= req.body
-      const neww = new modelNaveLanzadera({
-        nombre,
-        peso,
-        empuje,
-        tipo,
-        combustible,
-        velocidadMax,
-        capCarga,
-        cantPropulsores
-
-      }) 
-      neww.save()
-      .then((saveNave)=> {
-        res.json(saveNave)
+      const newNave = newNaveLanzaderaEntry(req.body)
+      navesServices
+      .addNaveLanzadera(newNave)
+      .then((naveSaved) => {
+        return res.json(naveSaved).end()
+      })
+      .catch((err:any) =>{
+        console.error(err.message)
+        res.status(400).end()
+      })
+      
+      
+    }else if( tipo === 'tripulada'){
+      const newNave = newNaveTripuladaEntry(req.body)
+      navesServices
+      .addNaveTripulada(newNave)
+      .then((naveSaved) => {
+        res.json(naveSaved)
       })
       .catch((err:any) => {
         console.error(err.message)
+        res.status(400).end()
       })
+      // res.json({response: 'tripulada'})
+    }else if(tipo === 'noTripulada'){
+      const newNave = newNaveNoTripuladaEntry(req.body)
+      navesServices
+      .addNaveNoTripulada(newNave)
+      .then((naveSaved) => {
+        res.json(naveSaved).end()
+      })
+      .catch((err:any) => {
+        console.error(err.message)
+        res.status(400).end()
+      })
+     
     }else{
 
       res.json({response:'no es lanzadera'})
     }
 
   } catch(err:any){
-    res.status(400).send(err.message)
+    res.status(400).json({message: err.message,ok: false}).end()
   }
 })
 export default navesRouter
