@@ -20,7 +20,7 @@ function App () {
   const handleBuscar = (arg) => {
     console.log(arg)
     if (arg !== false) {
-      const resultsFiltered = naves.filter((e) => e.nombre.includes(arg))
+      const resultsFiltered = naves.filter((e) => e.nombre.toLowerCase().includes(arg.toLowerCase()))
       setResults(resultsFiltered)
     } else {
       setResults(naves)
