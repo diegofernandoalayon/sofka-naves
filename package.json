@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "",
-  "workspaces":[
+  "workspaces": [
     "api",
     "app"
   ],
@@ -11,7 +11,7 @@
   "scripts": {
     "build": "npm run build --workspace=app",
     "start": "npm run start --workspace=api",
-    "dev:api":"npm run dev --workspace=api",
+    "dev:api": "npm run dev --workspace=api",
     "dev:full": "npm run build && npm run dev --workspace=api"
   },
   "keywords": [],
@@ -20,5 +20,8 @@
   "dependencies": {
     "app": "^0.1.0",
     "create-react-app": "^5.0.1"
+  },
+  "devDependencies": {
+    "jest": "^28.1.3"
   }
 }
