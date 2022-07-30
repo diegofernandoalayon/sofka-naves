@@ -11,7 +11,8 @@ type TNave = {
   procedencia: string
 }
 export type TNaveLanzadera = Omit<INaveLanzadera, 'despegar' |'aterrizar'>
-
+export type TNaveTripulada = Omit<INaveTripulada, 'despegar' | 'aterrizar'>
+export type TNaveNoTripulada = Omit<INaveNoTripulada, 'despegar' | 'aterrizar'>
 export interface INaves extends TNave{
   // nombre: string
   // peso: number
