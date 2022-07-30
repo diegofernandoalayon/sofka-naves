@@ -1,0 +1,11 @@
+.card-nave{
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 20px;
+}
+.card-nave h3{
+  background-color: ghostwhite;
+}
+.card-nave p{
+  margin: 0;
+}
