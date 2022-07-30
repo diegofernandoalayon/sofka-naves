@@ -6,8 +6,8 @@ function isString(string:any): boolean{
   if(typeof string === 'string') return true
   return false
 }
-function isNumber(number:any): boolean{
-  if(typeof +number === 'number') return true
+export function isNumber(number:any): boolean{
+  if(!isNaN(+number)) return true
   return false
 }
 function isTipo(string:any):boolean{
