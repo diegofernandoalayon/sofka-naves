@@ -28,7 +28,6 @@ function FormBuscar ({ handleBuscar }) {
           onChange={handleChange}
           placeholder='ingrese termino a buscar'
         />
-        <button>Buscar</button>
       </form>
     </>
   )

@@ -21,7 +21,7 @@
     "extends": [
       "react-app",
       "react-app/jest",
-      "./node_modules/standard/eslintrc.json"
+      "../node_modules/standard/eslintrc.json"
     ],
     "env": {
       "jest": true

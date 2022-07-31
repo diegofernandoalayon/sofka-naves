@@ -48,22 +48,28 @@ function App () {
 
   return (
     <div className='App'>
-      <h1>Sofka Espacial</h1>
+      <header>
+        <h1>Sofka Espacial</h1>
+        <strong>cant: {results.length}</strong>
+      </header>
       <div className='content'>
-        <div>
-          <FormBuscar handleBuscar={handleBuscar} />
+        <div className='content-forms'>
+          <div className='content-form-buscar'>
 
-          <Button
-            onClick={hhh}
-          >
-            {isCreating ? 'Cancelar' : 'Crear'}
-          </Button>
-          {
-            isCreating &&
-              <FormCrearNave
-                addNaveToDB={addNaveToDB}
-              />
-          }
+            <FormBuscar handleBuscar={handleBuscar} />
+            <br />
+            <Button
+              onClick={hhh}
+            >
+              {isCreating ? 'Cancelar' : 'Crear'}
+            </Button>
+            {
+              isCreating &&
+                <FormCrearNave
+                  addNaveToDB={addNaveToDB}
+                />
+            }
+          </div>
         </div>
         <div className='content-list-naves'>
           <ListOfResult results={results} />

@@ -2,9 +2,12 @@
   border: 1px solid black;
   border-radius: 8px;
   padding: 20px;
+  background-color: rgba(255,255,255,0.4);
+  backdrop-filter: blur(3px);
 }
 .card-nave h3{
-  background-color: ghostwhite;
+  background-color: rgba(244, 244, 244, 0.2);
+  border-radius: 4px;
 }
 .card-nave p{
   margin: 0;
