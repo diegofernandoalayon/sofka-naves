@@ -1,0 +1,11 @@
+.button-custom{
+  background-color: #09f;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  padding: 0.3rem;
+  font-size: 1rem;
+}
+.button-custom:hover{
+  opacity: 0.8;
+}
