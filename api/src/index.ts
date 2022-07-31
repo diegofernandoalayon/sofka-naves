@@ -6,7 +6,7 @@ const app = express()
 // dotenv.config()
 app.use(express.json())
 
-app.use(express.static('../app/build'))
+app.use(express.static('../app/build')) // react 
 app.use('/api/naves',navesRouter)
 app.get('/api/hello',( _req, res) => {
   res.send('Hello world!')

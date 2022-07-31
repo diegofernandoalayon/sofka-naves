@@ -36,11 +36,12 @@ posteriormene se puede ejecutar el comando:
 ``` 
 $npm run dev:full
 ```
+Interfaz usuario local: `http://localhost:3002/`
 
 ## Esquema de datos
 Nuestro proyecto esta conformado por una API que recibe los siguientes esquemas de datos al momento de crear una nave:
 ## Crear naves
-`/api/naves`
+local: `http://localhost:3002//api/naves`
 #### Crear nave tipo lanzadera
 | key         | value       | description | 
 | ----------- | ----------- | ----------- |
@@ -79,7 +80,7 @@ Nuestro proyecto esta conformado por una API que recibe los siguientes esquemas 
 | puedeAterrizar | boolean | la nave tiene la capacidad de aterrizar (true, false) |
 
 ## pedir naves
-`/api/naves`
+local: `http://localhost:3002//api/naves`
 Al momento de pedir naves se devuelve el esquema de cada nave adicionando lo siguiente
 
 | key         | value       | description | 
