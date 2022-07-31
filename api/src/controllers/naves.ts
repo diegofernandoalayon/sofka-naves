@@ -1,5 +1,5 @@
 import express from 'express'
-import { modelNaveLanzadera, modelNaveTripulada } from '../models/naves'
+import { modelNaveLanzadera, modelNaveNoTripulada, modelNaveTripulada } from '../models/naves'
 import { newNaveLanzaderaEntry, newNaveNoTripuladaEntry, newNaveTripuladaEntry } from '../utils'
 import * as navesServices from '../services/navesServices'
 const navesRouter = express.Router()
@@ -7,7 +7,8 @@ const navesRouter = express.Router()
 navesRouter.get('/', async(_req, res) => {
   const responseNavesLanzadera = await modelNaveLanzadera.find({})
   const responseNavesTripulada = await modelNaveTripulada.find({})
-  const responseAll = [...responseNavesLanzadera, ...responseNavesTripulada]
+  const responseNavesNoTripulada = await modelNaveNoTripulada.find({})
+  const responseAll = [...responseNavesLanzadera, ...responseNavesTripulada, ...responseNavesNoTripulada]
   res.json(responseAll)
   // res.send('listar todas las naves')
 })
