@@ -1,8 +1,15 @@
+// react
 import { useEffect, useState } from 'react'
+// styles
 import './App.css'
+// components
+import Button from './components/Button'
 import FormBuscar from './components/FormBuscar'
+import FormCrearNave from './components/FormCrearNave'
 import ListOfResult from './components/ListOfResults'
+// services
 import getNaves from './services/getNaves'
+import createNave from './services/createNave'
 
 function App () {
   const [naves, setNaves] = useState([])
@@ -18,7 +25,6 @@ function App () {
       .catch((err) => console.error(err))
   }, [])
   const handleBuscar = (arg) => {
-    console.log(arg)
     if (arg !== false) {
       const resultsFiltered = naves.filter((e) => e.nombre.toLowerCase().includes(arg.toLowerCase()))
       setResults(resultsFiltered)
@@ -29,6 +35,17 @@ function App () {
   const hhh = () => {
     setIsCreating(!isCreating)
   }
+  const addNaveToDB = (data) => {
+    createNave(data)
+      .then((res) => {
+        setNaves((actual) => [...actual, res])
+        setResults((actual) => [...actual, res])
+      })
+      .catch((err) => {
+        console.error(err.message)
+      })
+  }
+
   return (
     <div className='App'>
       <h1>Sofka Espacial</h1>
@@ -36,13 +53,16 @@ function App () {
         <div>
           <FormBuscar handleBuscar={handleBuscar} />
 
-          <button
+          <Button
             onClick={hhh}
           >
             {isCreating ? 'Cancelar' : 'Crear'}
-          </button>
+          </Button>
           {
-            isCreating && 'form'
+            isCreating &&
+              <FormCrearNave
+                addNaveToDB={addNaveToDB}
+              />
           }
         </div>
         <div className='content-list-naves'>
