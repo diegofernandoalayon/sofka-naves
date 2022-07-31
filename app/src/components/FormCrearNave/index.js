@@ -5,7 +5,7 @@ import FormTipoNoTripulada from '../FormTipoNoTripulada'
 import FormTipoTripulada from '../FormTipoTripulada'
 import './formCrearNave.css'
 const TIPO_NAVE = ['lanzadera', 'tripulada', 'noTripulada']
-function FormCrearNave () {
+function FormCrearNave ({ addNaveToDB }) {
   const [nombre, setNombre] = useState('')
   const [peso, setPeso] = useState('')
   const [empuje, setEmpuje] = useState('')
@@ -20,7 +20,7 @@ function FormCrearNave () {
   const [capPasajeros, setCapPasajeros] = useState('')
   // // estados nave no tripulada
   const [altitud, setAltitud] = useState('')
-  const [puedeAterrizar, setPuedeAterrizar] = useState('')
+  const [puedeAterrizar, setPuedeAterrizar] = useState(true)
 
   const newEntryBase = {
     nombre,
@@ -45,17 +45,35 @@ function FormCrearNave () {
     altitud,
     puedeAterrizar
   }
+  const resetForm = () => {
+    setNombre('')
+    setPeso('')
+    setEmpuje('')
+    setCombustible('')
+    setVelocidadMax('')
+    setProcedencia('')
+    // setTipo('')
+    setCapCarga('')
+    setCantPropulsores('')
+    setCapPasajeros('')
+    setAltitud('')
+    // setPuedeAterrizar('')
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
     switch (tipo) {
       case 'lanzadera':
-        console.log(newEntryLanzadera)
+        addNaveToDB(newEntryLanzadera)
+        resetForm()
         break
       case 'tripulada':
-        console.log(newEntryTripulada)
+        addNaveToDB(newEntryTripulada)
+        resetForm()
         break
       case 'noTripulada':
-        console.log(newEntryNoTripulada)
+        addNaveToDB(newEntryNoTripulada)
+        resetForm()
+        // console.log(newEntryNoTripulada)
         break
       default:
         break
