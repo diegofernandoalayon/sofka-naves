@@ -1,4 +1,4 @@
-## Naves Sofka
+## <a href='https://fast-tor-49458.herokuapp.com/' target='_blank'>Naves sofka</a>
 ***
 
 1. [Descripcion](#descripcion)
@@ -42,6 +42,9 @@ Interfaz usuario local: `http://localhost:3002/`
 Nuestro proyecto esta conformado por una API que recibe los siguientes esquemas de datos al momento de crear una nave:
 ## Crear naves
 local: `http://localhost:3002//api/naves`
+
+prod: `https://fast-tor-49458.herokuapp.com/api/naves`
+
 #### Crear nave tipo lanzadera
 | key         | value       | description | 
 | ----------- | ----------- | ----------- |
@@ -81,6 +84,9 @@ local: `http://localhost:3002//api/naves`
 
 ## pedir naves
 local: `http://localhost:3002//api/naves`
+
+prod: `https://fast-tor-49458.herokuapp.com/api/naves`
+
 Al momento de pedir naves se devuelve el esquema de cada nave adicionando lo siguiente
 
 | key         | value       | description | 
